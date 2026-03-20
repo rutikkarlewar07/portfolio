@@ -1,4 +1,32 @@
+"use client";
+import { useRef } from "react";
+
 export default function Home() {
+  const imgRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } =
+      imgRef.current.getBoundingClientRect();
+
+    const x = e.clientX - left;
+    const y = e.clientY - top;
+
+    const rotateX = ((y / height) - 0.5) * 20;
+    const rotateY = ((x / width) - 0.5) * -20;
+
+    imgRef.current.style.transform = `
+      perspective(600px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      scale(1.05)
+    `;
+  };
+
+  const resetTransform = () => {
+    imgRef.current.style.transform =
+      "perspective(600px) rotateX(0deg) rotateY(0deg) scale(1)";
+  };
+
   return (
     <div
       style={{
@@ -9,12 +37,33 @@ export default function Home() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        fontFamily: "Arial, sans-serif",
+        fontFamily: "Arial",
         textAlign: "center",
         padding: "20px",
       }}
     >
-      {/* Card Container */}
+      {/* 🔥 3D Image */}
+      <div
+        style={{
+          marginBottom: "30px",
+        }}
+      >
+        <img
+          ref={imgRef}
+          src="/home_img/profile.png"
+          alt="profile"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={resetTransform}
+          style={{
+            width: "220px",
+            borderRadius: "20px",
+            transition: "transform 0.2s ease",
+            boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
+          }}
+        />
+      </div>
+
+      {/* Card */}
       <div
         style={{
           backgroundColor: "rgba(255,255,255,0.05)",
@@ -26,39 +75,21 @@ export default function Home() {
           width: "100%",
         }}
       >
-        {/* Heading */}
-        <h1
-          style={{
-            fontSize: "42px",
-            marginBottom: "10px",
-            fontWeight: "bold",
-          }}
-        >
+        <h1 style={{ fontSize: "42px", marginBottom: "10px" }}>
           Hi, I'm Rutik 👋
         </h1>
 
-        {/* Subtitle */}
         <p
           style={{
             fontSize: "16px",
             color: "#cbd5f5",
             marginBottom: "25px",
-            lineHeight: "1.5",
           }}
         >
-          Full Stack Developer specializing in Next.js & Laravel.  
-          I build fast, scalable and SEO-friendly web applications.
+          Full Stack Developer specializing in Next.js & Laravel.
         </p>
 
-        {/* Buttons */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "15px",
-            flexWrap: "wrap",
-          }}
-        >
+        <div style={{ display: "flex", gap: "15px", justifyContent: "center" }}>
           <button
             style={{
               padding: "10px 22px",
@@ -67,8 +98,6 @@ export default function Home() {
               borderRadius: "6px",
               color: "white",
               cursor: "pointer",
-              fontWeight: "bold",
-              transition: "0.3s",
             }}
           >
             View Projects
@@ -77,13 +106,11 @@ export default function Home() {
           <button
             style={{
               padding: "10px 22px",
-              backgroundColor: "transparent",
               border: "1px solid #cbd5f5",
-              borderRadius: "6px",
+              background: "transparent",
               color: "#cbd5f5",
+              borderRadius: "6px",
               cursor: "pointer",
-              fontWeight: "bold",
-              transition: "0.3s",
             }}
           >
             Contact Me
@@ -91,14 +118,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Footer small text */}
-      <p
-        style={{
-          marginTop: "20px",
-          fontSize: "12px",
-          color: "#94a3b8",
-        }}
-      >
+      <p style={{ marginTop: "20px", fontSize: "12px", color: "#94a3b8" }}>
         © 2026 Rutik Portfolio
       </p>
     </div>
