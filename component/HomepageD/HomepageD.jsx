@@ -1,34 +1,150 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Home3d from "../HomepageD/Home3d";
+import Image from "next/image";
 
 export default function Homepage() {
   return (
-    <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
-      
-      {/* 🔥 Animated Background */}
-      <motion.div
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2 }}
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "#f8f9fc",
+        paddingTop: "72px",
+      }}
+    >
+      <section
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundImage: "url('/home_img/bg_img_3.webp')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          zIndex: 0,
+          maxWidth: "1200px",
+          margin: "0 auto",
+          minHeight: "calc(100vh - 72px)",
+          padding: "70px 32px",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          alignItems: "center",
+          gap: "70px",
         }}
-      />
+      >
+        {/* Left Content */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <p
+            style={{
+              margin: "0 0 18px",
+              color: "#0057d9",
+              fontSize: "13px",
+              fontWeight: 700,
+              letterSpacing: "1px",
+            }}
+          >
+            SERVING BUSINESSES IN PUNE & ACROSS INDIA
+          </p>
 
-      {/* 🔥 Content */}
-      <div style={{ position: "relative", zIndex: 2 }}>
-        <Home3d />
-      </div>
-    </div>
+          <h1
+            style={{
+              margin: "0 0 18px",
+              color: "#0b1f3a",
+              fontSize: "46px",
+              lineHeight: "1.08",
+              fontWeight: 700,
+              letterSpacing: "-1.5px",
+            }}
+          >
+            Website & Software
+            <br />
+            Solutions for Growing
+            <br />
+            Businesses
+          </h1>
+
+          <p
+            style={{
+              maxWidth: "500px",
+              margin: "0 0 28px",
+              color: "#4b6483",
+              fontSize: "16px",
+              lineHeight: "1.55",
+            }}
+          >
+            InfoCore Solutions is a Pune-based technology company providing
+            professional website development, web application development,
+            custom software and digital solutions for businesses.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              gap: "14px",
+              alignItems: "center",
+            }}
+          >
+            <a
+              href="/contact"
+              style={{
+                display: "inline-block",
+                background: "#0057d9",
+                color: "#fff",
+                textDecoration: "none",
+                padding: "12px 20px",
+                fontSize: "13px",
+                fontWeight: 600,
+                borderRadius: "3px",
+              }}
+            >
+              Get a Free Consultation
+            </a>
+
+            <a
+              href="/services"
+              style={{
+                display: "inline-block",
+                background: "transparent",
+                color: "#334155",
+                textDecoration: "none",
+                padding: "11px 20px",
+                fontSize: "13px",
+                fontWeight: 500,
+                border: "1px solid #aeb8c8",
+                borderRadius: "3px",
+              }}
+            >
+              View Our Services
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Right Image */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{
+            background: "#fff",
+            border: "1px solid #d9dee8",
+            borderRadius: "4px",
+            padding: "46px 26px",
+            minHeight: "405px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Image
+            src="/home_img/bg_img_3.webp"
+            alt="Website and software solutions"
+            width={600}
+            height={400}
+            style={{
+              width: "100%",
+              height: "auto",
+              objectFit: "contain",
+            }}
+            priority
+          />
+        </motion.div>
+      </section>
+    </main>
   );
 }
