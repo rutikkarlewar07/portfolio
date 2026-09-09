@@ -52,7 +52,6 @@ export default function Navbar() {
         }}
       >
         {/* Logo */}
-        {/* Logo */}
         <Link
           href="/"
           style={{
@@ -65,9 +64,11 @@ export default function Navbar() {
             src="/website-img/logo.webp"
             alt="Logo"
             style={{
-              width: "150px",
-              height: "auto",
+              height: "48px",
+              width: "auto",
+              maxWidth: "150px",
               display: "block",
+              objectFit: "contain",
             }}
           />
         </Link>
