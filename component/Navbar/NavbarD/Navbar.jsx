@@ -52,17 +52,24 @@ export default function Navbar() {
         }}
       >
         {/* Logo */}
+        {/* Logo */}
         <Link
           href="/"
           style={{
+            display: "flex",
+            alignItems: "center",
             textDecoration: "none",
-            color: "#0b1f3a",
-            fontSize: "26px",
-            fontWeight: 700,
-            whiteSpace: "nowrap",
           }}
         >
-          InfoCore Solutions
+          <img
+            src="/website-img/logo.webp"
+            alt="Logo"
+            style={{
+              width: "150px",
+              height: "auto",
+              display: "block",
+            }}
+          />
         </Link>
 
         {/* Navigation */}
