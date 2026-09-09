@@ -121,8 +121,6 @@ export default function Homepage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           style={{
-            background: "#fff",
-
             padding: "46px 26px",
             minHeight: "405px",
             display: "flex",
