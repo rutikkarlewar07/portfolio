@@ -57,6 +57,7 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
+            gap: "10px",
             textDecoration: "none",
           }}
         >
@@ -71,6 +72,16 @@ export default function Navbar() {
               objectFit: "contain",
             }}
           />
+          <span
+            style={{
+              fontSize: "20px",
+              fontWeight: 700,
+              color: "#0f172a",
+              whiteSpace: "nowrap",
+            }}
+          >
+            InfoCore Solutions
+          </span>
         </Link>
 
         {/* Navigation */}
