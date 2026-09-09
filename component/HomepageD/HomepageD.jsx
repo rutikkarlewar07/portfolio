@@ -12,6 +12,7 @@ export default function Homepage() {
         paddingTop: "72px",
       }}
     >
+      {/* Hero Section */}
       <section
         style={{
           maxWidth: "1200px",
@@ -141,6 +142,139 @@ export default function Homepage() {
             priority
           />
         </motion.div>
+      </section>
+
+      {/* Business Value Bar */}
+      <section
+        style={{
+          borderTop: "1px solid #d9e0ea",
+          borderBottom: "1px solid #d9e0ea",
+          background: "#eef3fb",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            minHeight: "66px",
+            padding: "0 32px",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            alignItems: "center",
+            gap: "20px",
+          }}
+        >
+          {/* Item 1 */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "7px",
+              color: "#46566f",
+              fontSize: "12px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <span
+              style={{
+                color: "#0057d9",
+                fontSize: "16px",
+                fontWeight: 700,
+              }}
+            >
+              ✓
+            </span>
+            Business-focused solutions
+          </div>
+
+          {/* Item 2 */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "7px",
+              color: "#46566f",
+              fontSize: "12px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <span
+              style={{
+                color: "#0057d9",
+                fontSize: "16px",
+              }}
+            >
+              ▣
+            </span>
+            Responsive & scalable technology
+          </div>
+
+          {/* Item 3 */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "7px",
+              color: "#46566f",
+              fontSize: "12px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <span
+              style={{
+                color: "#0057d9",
+                fontSize: "16px",
+                fontWeight: 700,
+              }}
+            >
+              ‹›
+            </span>
+            Custom development
+          </div>
+
+          {/* Item 4 */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "7px",
+              color: "#46566f",
+              fontSize: "12px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <span
+              style={{
+                color: "#0057d9",
+                fontSize: "16px",
+              }}
+            >
+              ♧
+            </span>
+            Support & maintenance
+          </div>
+        </div>
+      </section>
+
+      {/* Next Section */}
+      <section
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "70px 32px",
+        }}
+      >
+        <h2
+          style={{
+            margin: 0,
+            textAlign: "center",
+            color: "#0b1f3a",
+            fontSize: "32px",
+            fontWeight: 700,
+          }}
+        >
+          Comprehensive IT Services
+        </h2>
       </section>
     </main>
   );
