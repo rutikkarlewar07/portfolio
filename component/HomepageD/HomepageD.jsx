@@ -122,8 +122,7 @@ export default function Homepage() {
           transition={{ duration: 0.8 }}
           style={{
             background: "#fff",
-            border: "1px solid #d9dee8",
-            borderRadius: "4px",
+
             padding: "46px 26px",
             minHeight: "405px",
             display: "flex",
