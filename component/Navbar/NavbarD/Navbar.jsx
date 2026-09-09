@@ -3,6 +3,40 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
+function HoverLink({ href, style, children }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <Link
+      href={href}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        ...style,
+        color: hover ? "#0057d9" : style.color,
+      }}
+    >
+      {children}
+    </Link>
+  );
+}
+
+function HoverDropdownButton({ isOpen, onClick, children }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        ...dropdownButtonStyle,
+        color: hover || isOpen ? "#0057d9" : dropdownButtonStyle.color,
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const navRef = useRef(null);
@@ -94,9 +128,9 @@ export default function Navbar() {
         >
           {/* Services */}
           <div style={dropdownWrapperStyle}>
-            <button
+            <HoverDropdownButton
+              isOpen={openDropdown === "services"}
               onClick={() => toggleDropdown("services")}
-              style={dropdownButtonStyle}
             >
               Services
               <span
@@ -110,43 +144,43 @@ export default function Navbar() {
               >
                 ⌄
               </span>
-            </button>
+            </HoverDropdownButton>
 
             {openDropdown === "services" && (
               <div style={dropdownStyle}>
-                <Link
+                <HoverLink
                   href="/services/website-development"
                   style={dropdownLinkStyle}
                 >
                   Website Development
-                </Link>
+                </HoverLink>
 
-                <Link
+                <HoverLink
                   href="/services/app-development"
                   style={dropdownLinkStyle}
                 >
                   App Development
-                </Link>
+                </HoverLink>
 
-                <Link
+                <HoverLink
                   href="/services/software-development"
                   style={dropdownLinkStyle}
                 >
                   Custom Software
-                </Link>
+                </HoverLink>
 
-                <Link href="/services/seo" style={dropdownLinkStyle}>
+                <HoverLink href="/services/seo" style={dropdownLinkStyle}>
                   SEO
-                </Link>
+                </HoverLink>
               </div>
             )}
           </div>
 
           {/* Tools */}
           <div style={dropdownWrapperStyle}>
-            <button
+            <HoverDropdownButton
+              isOpen={openDropdown === "tools"}
               onClick={() => toggleDropdown("tools")}
-              style={dropdownButtonStyle}
             >
               Tools
               <span
@@ -160,38 +194,38 @@ export default function Navbar() {
               >
                 ⌄
               </span>
-            </button>
+            </HoverDropdownButton>
 
             {openDropdown === "tools" && (
               <div style={dropdownStyle}>
-                <Link href="/tools/email" style={dropdownLinkStyle}>
+                <HoverLink href="/tools/email" style={dropdownLinkStyle}>
                   Email Tools
-                </Link>
+                </HoverLink>
 
-                <Link href="/tools/whatsapp" style={dropdownLinkStyle}>
+                <HoverLink href="/tools/whatsapp" style={dropdownLinkStyle}>
                   WhatsApp Tools
-                </Link>
+                </HoverLink>
 
-                <Link href="/tools/messaging" style={dropdownLinkStyle}>
+                <HoverLink href="/tools/messaging" style={dropdownLinkStyle}>
                   Messaging Tools
-                </Link>
+                </HoverLink>
 
-                <Link href="/tools/free" style={dropdownLinkStyle}>
+                <HoverLink href="/tools/free" style={dropdownLinkStyle}>
                   Free Tools
-                </Link>
+                </HoverLink>
 
-                <Link href="/tools/paid" style={dropdownLinkStyle}>
+                <HoverLink href="/tools/paid" style={dropdownLinkStyle}>
                   Premium Tools
-                </Link>
+                </HoverLink>
               </div>
             )}
           </div>
 
           {/* Solutions */}
           <div style={dropdownWrapperStyle}>
-            <button
+            <HoverDropdownButton
+              isOpen={openDropdown === "solutions"}
               onClick={() => toggleDropdown("solutions")}
-              style={dropdownButtonStyle}
             >
               Solutions
               <span
@@ -205,45 +239,45 @@ export default function Navbar() {
               >
                 ⌄
               </span>
-            </button>
+            </HoverDropdownButton>
 
             {openDropdown === "solutions" && (
               <div style={dropdownStyle}>
-                <Link
+                <HoverLink
                   href="/solutions/business-automation"
                   style={dropdownLinkStyle}
                 >
                   Business Automation
-                </Link>
+                </HoverLink>
 
-                <Link
+                <HoverLink
                   href="/solutions/digital-transformation"
                   style={dropdownLinkStyle}
                 >
                   Digital Transformation
-                </Link>
+                </HoverLink>
 
-                <Link
+                <HoverLink
                   href="/solutions/custom-solutions"
                   style={dropdownLinkStyle}
                 >
                   Custom Solutions
-                </Link>
+                </HoverLink>
               </div>
             )}
           </div>
 
-          <Link href="/industries" style={navLinkStyle}>
+          <HoverLink href="/industries" style={navLinkStyle}>
             Industries
-          </Link>
+          </HoverLink>
 
-          <Link href="/about-us" style={navLinkStyle}>
+          <HoverLink href="/about-us" style={navLinkStyle}>
             About Us
-          </Link>
+          </HoverLink>
 
-          <Link href="/contact" style={navLinkStyle}>
+          <HoverLink href="/contact" style={navLinkStyle}>
             Contact
-          </Link>
+          </HoverLink>
         </nav>
 
         {/* CTA */}
@@ -273,6 +307,7 @@ const navLinkStyle = {
   fontSize: "15px",
   fontWeight: 500,
   whiteSpace: "nowrap",
+  transition: "color 0.2s ease",
 };
 
 const dropdownButtonStyle = {
@@ -286,6 +321,7 @@ const dropdownButtonStyle = {
   display: "flex",
   alignItems: "center",
   whiteSpace: "nowrap",
+  transition: "color 0.2s ease",
 };
 
 const arrowStyle = {
@@ -320,4 +356,5 @@ const dropdownLinkStyle = {
   textDecoration: "none",
   fontSize: "14px",
   whiteSpace: "nowrap",
+  transition: "color 0.2s ease",
 };
