@@ -132,7 +132,7 @@ export default function Homepage() {
           }}
         >
           <Image
-            src="/home_img/bg_img_3.webp"
+            src="/website-img/home-page.webp"
             alt="Website and software solutions"
             width={600}
             height={400}
